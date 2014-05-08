@@ -7,9 +7,7 @@ var _ = require('underscore');
 // require more modules/folders here!
 
 exports.handleRequest = function (req, res) {
-
   var pathName = url.parse(req.url).pathname;
-
   if (req.method === 'GET') {
     if (pathName === '/') {
       http.serveAssets(res, archive.paths.siteAssets, '/index.html', 'text/html');
@@ -36,8 +34,10 @@ exports.handleRequest = function (req, res) {
         } else {
           archive.addUrlToList(msg);
           http.serveAssets(res, archive.paths.siteAssets, '/loading.html', 'text/html', 302);
+
         }
       });
     });
   }
 };
+
